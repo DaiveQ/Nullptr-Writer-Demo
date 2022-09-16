@@ -8,7 +8,8 @@ The method to write to null is provided in a [comment by valverde](https://www.y
 
 The short of valverde's comment (supported by this program) is that you can write to a null pointer by
 forcing mmap to not take the supplied address as a hint using the flag `MAP_FIXED` and running the program as root.
-Otherwise, the write should fail and the program follows the value at `/proc/sys/vm/mmap_min_addr`.
+Otherwise, the write should fail for non-root users and the program follows the value at `/proc/sys/vm/mmap_min_addr`.
+This should either cause mmap to map a different address (without `MAP_FIXED`), or return a permission error (with `MAP_FIXED`)
 
 It would be possible to change the value of `mmap_min_addr` for non-root users to be able to do so, but this is a bad idea.
 To learn why (and why mmap_min_addr exists), read up on Null Pointer Dereference (NPD) attacks.
