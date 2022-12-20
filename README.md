@@ -13,3 +13,4 @@ This should either cause mmap to map a different address (without `MAP_FIXED`), 
 
 It would be possible to change the value of `mmap_min_addr` for non-root users to be able to do so, but this is a bad idea.
 To learn why (and why mmap_min_addr exists), read up on Null Pointer Dereference (NPD) attacks.
+Note that I'm not exactly sure how this works with virutal memory.
