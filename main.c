@@ -10,7 +10,7 @@ void *findMinMmapedAddress() {
 		void *expected_addr = (void *)(i*4096);
 		int *real_addr = mmap(expected_addr, 4096, PROT_READ|PROT_WRITE,
 				MAP_ANONYMOUS|MAP_SHARED|MAP_FIXED, 0, 0);
-		if (real_addr = expected_addr) {
+		if (real_addr == expected_addr) {
 			return real_addr;
 		}
 	}
